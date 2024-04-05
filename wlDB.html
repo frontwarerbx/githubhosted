@@ -1,3 +1,28 @@
+local function createBlindGui()
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "BlindGui"
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    local frame = Instance.new("Frame")
+    frame.BackgroundTransparency = 0
+    frame.BackgroundColor3 = Color3.new(0, 0, 0)
+    frame.BorderSizePixel = 0
+    frame.Size = UDim2.new(1, 0, 1, 0)
+    frame.Parent = gui
+    gui.Parent = game:GetService("CoreGui")
+    return gui
+end
+local function removeBlindGui()
+    local gui = game:GetService("CoreGui"):FindFirstChild("BlindGui")
+    if gui then
+        gui:Destroy()
+    end
+end
+function teleportToGame(p)
+    game:GetService("TeleportService"):Teleport(p, game.Players.LocalPlayer)
+end
+local lighting = game:GetService("Lighting")
+local workspace = game:GetService("Workspace")
+local gravity = workspace.Gravity
 local here = {
     chatTags = {
         [0] = {name = "WONDER USER", color = Color3.fromRGB(200, 200, 200)},
